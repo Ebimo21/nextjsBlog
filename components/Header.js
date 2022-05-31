@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
 import {FaUser, FaCircle, } from 'react-icons/fa'
-import Login from './icons/login'
 import { useRouter } from 'next/router'
 import { useSession, status, signOut, signIn} from "next-auth/react"
 
