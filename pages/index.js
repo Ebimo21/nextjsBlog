@@ -15,10 +15,6 @@ export default function Home({postsData}) {
   const { data: session, status } = useSession();
     console.log("session id: ", session);
 
-    if(status === "loading"){
-        return " ";
-    }
-
    
  
   // const posts =[
