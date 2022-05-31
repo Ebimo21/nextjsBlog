@@ -8,7 +8,7 @@ const Register = () => {
   const onSubmit =  handleSubmit ( async data =>{
     document.getElementById('regForm').reset();
 
-    await fetch('http://localhost:3000/api/registerapi', {
+    await fetch('https://nextjs-blog-tau-seven-60.vercel.app/api/registerapi', {
       method: 'POST',
       headers: {
         // Accept: 'application/json',
