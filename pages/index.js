@@ -3,6 +3,7 @@ import BlogCard from '../components/BlogCard'
 import {useState} from 'react'
 // import { signIn } from "next-auth/react"
 import { useSession, status, signIn, signOut} from "next-auth/react"
+import useSWR from 'swr'
 
 
 
@@ -10,10 +11,19 @@ import { useSession, status, signIn, signOut} from "next-auth/react"
 // const posts = JSON.stringify(raw);
 
 
-export default function Home({postsData}) {
+export default function Home() {
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+  const API = "https://nextjs-blog-tau-seven-60.vercel.app/api/postapi";
+  const { data, error } = useSWR("api/postapi", fetcher);
 
-  const { data: session, status } = useSession();
-    console.log("session id: ", session);
+  if (error) return "An error has occurred.";
+  if (!data) return (<BlogCard
+    title="Blog Post 1"
+    subTitle={`First Blog Card`}
+    description={`This is a blog post made to show how to create a site.`}>
+  </BlogCard>);
+  // const { data: session, status } = useSession();
+    // console.log("session id: ", session);
 
    
  
@@ -44,7 +54,7 @@ export default function Home({postsData}) {
 
       {/* {session ? <button onClick={signOut}>Log out</button> : <button onClick={signIn}> Log in  </button>} */}
       
-      {postsData.map((post) => (
+      {data.map((post) => (
 
         <BlogCard
           key={post.id}
@@ -57,13 +67,13 @@ export default function Home({postsData}) {
         )
       }
 
-      <BlogCard
-        title="Blog Post 1"
+      {/* <BlogCard
+        title="post Blog Post 1"
         subTitle={`First Blog Card`}
         description={`This is a blog post made to show how to create a site.`}>
-      </BlogCard>
+      </BlogCard> */}
 
-      <BlogCard
+      {/* <BlogCard
         title="Blog Post 2"
         subTitle={`Second Blog Card `}
         description={`This is a blog post made to show how to create a site.`}>
@@ -91,19 +101,22 @@ export default function Home({postsData}) {
         title="Blog Post 6"
         subTitle={`Sixth Blog Card`}
         description={`This is a blog to post made to show how to create a site.`}>
-      </BlogCard>
+      </BlogCard> */}
     </div>
   )
 }
 
-export const getServerSideProps= async() =>{
+// export const getStaticProps= async() =>{
 
-  const response = await fetch('https://nextjs-blog-tau-seven-60.vercel.app/api/postapi');
-  // const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
-  const postsData = await response.json();
+//   // const postData = await fetch('https://nextjs-blog-tau-seven-60.vercel.app/api/postapi');
+//   // const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
+//   const postsData = await fetcher(API)
 
-  return{props: {
-    postsData
-  }}
-}
+//   return{props: {
+//     fallback: {
+//       [API]: postsData
+//     }
+    
+//   }}
+// }
 
