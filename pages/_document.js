@@ -15,18 +15,10 @@ export default function Document(){
     return (
         <Html className={themeColor}>
             <Head />
-            
-            <body className={`dark:bg-black dark:text-white`}>
-                
-                <Main />
-                <NextScript />
-
-                <button onClick={()=>{
-                    console.log("hi")
-                    setDarkTheme(!darkTheme);
-                }} >Click Me</button>
-                <button>{`${darkTheme}`}</button>
-            </body>
+                <body className={`dark:bg-black dark:text-white`}>
+                    <Main />
+                    <NextScript />
+                </body>
         </Html>
     )
 }

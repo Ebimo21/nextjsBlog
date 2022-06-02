@@ -10,7 +10,7 @@ const Header = () => {
     
     console.log(path);
     const { data: session, status } = useSession();
-    console.log("session id: ", session);
+    console.log("head session id: ", session);
 
     if(status === "loading"){
         return " ";

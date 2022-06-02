@@ -6,7 +6,7 @@ import { useSession, status} from "next-auth/react"
 const Footer = () => {
 
   const { data: session, status } = useSession();
-    console.log("session id: ", session);
+    console.log("footer session id: ", session);
 
     if(status === "loading"){
         return " ";

@@ -1,32 +1,19 @@
 import Head from 'next/head'
 import BlogCard from '../components/BlogCard'
-import {useState} from 'react'
-// import { signIn } from "next-auth/react"
-import { useSession, status, signIn, signOut} from "next-auth/react"
 import useSWR from 'swr'
-
-
-
-
-// const posts = JSON.stringify(raw);
-
 
 export default function Home() {
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const API = "https://nextjs-blog-tau-seven-60.vercel.app/api/postapi";
+  const API = "https://localhost:3000/api/postapi";
   const { data, error } = useSWR("api/postapi", fetcher);
 
   if (error) return "An error has occurred.";
-  if (!data) return (<BlogCard
-    title="Blog Post 1"
-    subTitle={`First Blog Card`}
-    description={`This is a blog post made to show how to create a site.`}>
-  </BlogCard>);
+  if (!data) return " ";
   // const { data: session, status } = useSession();
     // console.log("session id: ", session);
 
    
- 
+
   // const posts =[
   //   {id: 1, title: "title1", subTitle: "subTitle1", description: "description1" },
   //   {id: 2, title: "title2", subTitle: "subTitle2", description: "description2" },
