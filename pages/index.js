@@ -75,7 +75,7 @@ export default function Home({postsData}) {
 
 export const getServerSideProps= async() =>{
 
-  const response = await fetch('http://localhost:3000/api/postapi');
+  const response = await fetch('https://nextjs-blog-tau-seven-60.vercel.app/api/postapi');
   const postsData = await response.json();
 
   return{props: {
