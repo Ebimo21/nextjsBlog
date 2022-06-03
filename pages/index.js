@@ -1,28 +1,8 @@
 import Head from 'next/head'
 import BlogCard from '../components/BlogCard'
-import useSWR from 'swr'
 
-export default function Home() {
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-  const API = "https://localhost:3000/api/postapi";
-  const { data, error } = useSWR("api/postapi", fetcher);
-
-  if (error) return "An error has occurred.";
-  if (!data) return " ";
-  // const { data: session, status } = useSession();
-    // console.log("session id: ", session);
-
-   
-
-  // const posts =[
-  //   {id: 1, title: "title1", subTitle: "subTitle1", description: "description1" },
-  //   {id: 2, title: "title2", subTitle: "subTitle2", description: "description2" },
-  //   {id: 3, title: "title3", subTitle: "subTitle3", description: "description3" },
-  
-  
-  // ];
-
-  const posts = [];
+export default function Home({postsData}) {
+ 
   return (
     <div >
       <Head>
@@ -41,7 +21,7 @@ export default function Home() {
 
       {/* {session ? <button onClick={signOut}>Log out</button> : <button onClick={signIn}> Log in  </button>} */}
       
-      {data.map((post) => (
+      {postsData.map((post) => (
 
         <BlogCard
           key={post.id}
@@ -93,17 +73,13 @@ export default function Home() {
   )
 }
 
-// export const getStaticProps= async() =>{
+export const getServerSideProps= async() =>{
 
-//   // const postData = await fetch('https://nextjs-blog-tau-seven-60.vercel.app/api/postapi');
-//   // const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
-//   const postsData = await fetcher(API)
+  const response = await fetch('http://localhost:3000/api/postapi');
+  const postsData = await response.json();
 
-//   return{props: {
-//     fallback: {
-//       [API]: postsData
-//     }
-    
-//   }}
-// }
+  return{props: {
+     postsData
+  }}
+}
 

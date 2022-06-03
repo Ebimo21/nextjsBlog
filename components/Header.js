@@ -8,13 +8,7 @@ const Header = () => {
     const router = useRouter();
     const path = router.asPath // /posts/ebimo
     
-    console.log(path);
     const { data: session, status } = useSession();
-    console.log("head session id: ", session);
-
-    if(status === "loading"){
-        return " ";
-    }
 
 
     

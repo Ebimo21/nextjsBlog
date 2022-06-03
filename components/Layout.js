@@ -7,10 +7,10 @@ import { useSession} from "next-auth/react"
 const Layout = ({children}) => {
 
   const { data: session, status } = useSession();
-    console.log("Layout session id: ", session);
+    // console.log("Layout session id: ", session);
 
     if(status === "loading"){
-        return " ";
+        return <p>Loadin</p>;
     }
 
   return (
