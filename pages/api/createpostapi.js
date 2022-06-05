@@ -61,7 +61,7 @@ export default async function handler(req, res){
                         create: [
                             {
                                 title: data.title,
-                                content: data.content,
+                                // content: data.content,
                                 
                                 published: data.published === "true",
                             }
