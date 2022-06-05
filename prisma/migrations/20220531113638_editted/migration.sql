@@ -1,6 +1,7 @@
 -- AlterTable
 ALTER TABLE `user` ADD COLUMN `role` ENUM('USER', 'ADMIN') NOT NULL DEFAULT 'USER';
 
+ALTER TABLE `Post` ADD COLUMN `content` MEDIUMTEXT
 -- CreateTable
 CREATE TABLE `Profile` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,

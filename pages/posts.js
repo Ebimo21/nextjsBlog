@@ -3,6 +3,7 @@ import Head from 'next/head'
 import BlogCard from '../components/BlogCard'
 import { useSession} from "next-auth/react"
 import useSWR from 'swr'
+import Link from 'next/link'
 
 
 
@@ -42,6 +43,10 @@ function Posts () {
         </Head>
 
         <h1>Posts</h1>
+        <Link href='/post/create'>
+        <a >Create New Post
+          </a></Link>
+        
         
         {data.map((post) => (
 

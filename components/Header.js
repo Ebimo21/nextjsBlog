@@ -28,8 +28,10 @@ const Header = () => {
             
                 <Link href={`/about`} ><a className={`text-orange-600`}>About</a></Link>
 
+                {session ? (
                 <Link href={`/posts`}><a>Posts</a></Link>
 
+                ): ""}
                 <Link href={`/news`}><a>News</a></Link>
                 
                 { !session? 

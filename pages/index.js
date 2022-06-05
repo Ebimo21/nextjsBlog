@@ -21,13 +21,15 @@ export default function Home({postsData}) {
 
       {/* {session ? <button onClick={signOut}>Log out</button> : <button onClick={signIn}> Log in  </button>} */}
       
+{      console.log(postsData)}
       {postsData.map((post) => (
 
         <BlogCard
           key={post.id}
+          id={post.id}
           title={post.title}
           // subTitle={post.body}
-          subTitle={post.author.name}
+          subTitle={post.content}
           description={post.author.email}>
         </BlogCard>
           )
@@ -75,7 +77,7 @@ export default function Home({postsData}) {
 
 export const getServerSideProps= async() =>{
 
-  const response = await fetch('https://nextjs-blog-tau-seven-60.vercel.app/api/postapi');
+  const response = await fetch('http://localhost:3000/api/postapi');
   const postsData = await response.json();
 
   return{props: {
