@@ -9,7 +9,7 @@ function Create() {
 
     const create = handleSubmit(async data =>{
 
-        const response = await fetch("http://localhost:3000/api/createpostapi", {
+        const response = await fetch("https://nextjs-blog-tau-seven-60.vercel.app/api/createpostapi", {
 
             method: "POST",
             headers:{
