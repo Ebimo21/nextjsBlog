@@ -7,7 +7,7 @@ export default function Document(){
     
     
     return (
-        <Html >
+        <Html data-theme="light"  >
             <Head />
                 <body>
                     <Main />

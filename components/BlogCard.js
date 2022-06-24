@@ -3,16 +3,26 @@ import Link from 'next/link'
 
 const BlogCard = ({title, subTitle, description, key, id}) => {
   return (
-    <div key={key} className={` px-3 hover:border-green-500 mt-2 py-10 border-orange-400 border-solid border-2`}>
     <Link href={`/posts/2`}>
-    
-        <div className={`px-1`}>
-          <h1 className={`text-xl font-semibold`}>{title}</h1>
-          <p>{subTitle}</p>
-          <p>{description}</p>
+      <div key={key} className={`p-2 basis-5/12 basis-4/12 sm:basis-full `}>
+      {/* <div className={"p-2"}> */}
+        <div className="card  bg-base-100 shadow-xl">
+          {/* <figure><img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure> */}
+          <div className="card-body flex-wrap">
+            <h2 className="card-title">{title}</h2>
+            <p>{subTitle}</p>
+            <p>{description}</p>
+            <div className="card-actions justify-end">
+              <div className="badge badge-outline">Fashion</div> 
+              <div className="badge badge-outline">Products</div>
+              {/* <button className="btn btn-primary">Buy Now</button> */}
+            </div>
+          </div>
         </div>
-    </Link>
+      {/* </div> */}
     </div>
+    </Link>
+
   )
 }
 

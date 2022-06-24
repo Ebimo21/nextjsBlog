@@ -7,7 +7,7 @@ html,
 body {
   
   font-family: 'Montserrat';
-  /* font-weight:  ; */
+  font-weight:  500;
 }
 
 a {
@@ -19,4 +19,8 @@ a {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+#heroin{
+  background-image: url('/landing.jpg');
 }

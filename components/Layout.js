@@ -10,7 +10,7 @@ const Layout = ({children}) => {
     // console.log("Layout session id: ", session);
 
     if(status === "loading"){
-        return <p>Loadin</p>;
+        return "";
     }
 
   return (

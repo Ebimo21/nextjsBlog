@@ -13,18 +13,50 @@ export default function Home({postsData}) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        
       rel="stylesheet"></link>
       </Head>
 
-      <h2 className={`px-4 font-bold dark:text-2xl dark:bg-black dark:text-white`}>Published Posts</h2>
-      <p></p>
+      <style>
+@import url(&apos;https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap&apos;);
+</style>
+<style>
+@import url(&apos;https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,900;1,700&display=swap&apos;);
+</style>
+
+
+<div id="heroin" className=" hero min-h-screen" >
+  <div className="hero-overlay bg-opacity-60"></div>
+  <div className="hero-content text-center text-neutral-content">
+    <div className="max-w-md">
+      <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+      <button className="btn btn-primary">Get Started</button>
+    </div>
+  </div>
+</div>
+      
 
       {/* {session ? <button onClick={signOut}>Log out</button> : <button onClick={signIn}> Log in  </button>} */}
+
+      <div className='card'>
+        <div className="card-body">
+          <div className='card-title'>Latest Post </div>
+        </div>
+      </div>
+
+
+
       
+
 {      console.log(postsData)}
+    
+
+
+<div className={"flex justify-center  flex-wrap"}>
       {postsData.map((post) => (
 
-        <BlogCard
+          <BlogCard
           key={post.id}
           id={post.id}
           title={post.title}
@@ -33,9 +65,10 @@ export default function Home({postsData}) {
           description={post.author.email}>
         </BlogCard>
           )
-        )
-      }
+          )
+        }
 
+        </div>
       {/* <BlogCard
         title="post Blog Post 1"
         subTitle={`First Blog Card`}
@@ -79,6 +112,7 @@ export const getServerSideProps= async() =>{
 
   const response = await fetch('https://nextjs-blog-tau-seven-60.vercel.app/api/postapi');
   const postsData = await response.json();
+
 
   return{props: {
      postsData

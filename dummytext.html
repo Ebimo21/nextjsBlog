@@ -1,0 +1,240 @@
+<div class="navbar bg-base-100">
+    <div class="flex-1">
+      <Link href={'/'}>
+        <div>
+          <a class="btn btn-ghost normal-case text-xl">Crowdr<span><FaCircle className={`inline text-xs text-orange-600`} /></span></a>
+        </div>
+      </Link>
+    </div>
+
+    <div class="sm:inline-flex flex-none hidden">
+      <ul class="menu menu-horizontal p-0">
+        <li><a>About</a></li>
+        <li><a>News</a></li>
+      </ul>
+      
+      {!session?
+      <Link href={'/register'}>
+        <a> 
+          <button class="btn btn-sm mx-2 gap-2">
+            <svg className={`h-6 w-6`} xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 20 20" height="18px" viewBox="0 0 20 20" width="18px" fill="#ffff"><g><rect fill="#ffffff00" height="20" width="20"/></g><g><path d="M10,4v1h6v10h-6v1h6c0.55,0,1-0.45,1-1V5c0-0.55-0.45-1-1-1H10z"/><polygon points="9.5,6.5 8.79,7.21 11.09,9.5 3,9.5 3,10.5 11.09,10.5 8.79,12.79 9.5,13.5 13,10"/></g></svg>
+            Register
+          </button>
+        </a>
+      </Link>
+        :
+        ""
+      }
+      
+      {session ?
+        <button onClick={signOut} className="btn btn-sm loading ">Log Out</button> 
+        :
+        <button onClick={signIn} className="btn btn-sm loading ">Sign In</button>
+      }
+    </div>
+
+    <label class="btn sm:hidden btn-circle btn-sm dropdown dropdown-left swap swap-rotate">
+      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52">
+        <li><a>Item 1</a></li>
+        <li><a>Item 2</a></li>
+      </ul>
+    
+      <input type="checkbox" />
+    
+      <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
+    
+      <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
+    
+    </label>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  import Link from 'next/link'
+import React from 'react'
+import {FaUser, FaCircle, } from 'react-icons/fa'
+import { useRouter } from 'next/router'
+import { useSession, status, signOut, signIn} from "next-auth/react"
+
+const Header = () => {
+    const router = useRouter();
+    const path = router.asPath // /posts/ebimo
+    
+    const { data: session, status } = useSession();
+
+
+    
+  return (
+
+    
+    <>
+      <div className="sm:navbar bg-base-100">
+
+        <label className="btn sm:hidden float-right btn-circle btn-sm dropdown dropdown-left swap swap-rotate">
+            <ul tabindex="0" className="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52">
+              <li><a>Item 1</a></li>
+              <li><a>Item 2</a></li>
+            </ul>
+          
+            <input type="checkbox" />
+          
+            <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
+          
+            <svg className="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
+          
+        </label>
+
+        
+        <div className="flex-1">
+          <Link href={'/'}>
+            <div>
+              <a className="btn btn-ghost normal-case text-xl">Crowdr<span><FaCircle className={`inline text-xs text-orange-600`} /></span></a>
+            </div>
+          </Link>
+        </div>
+        
+
+        <div className="sm:inline-flex sm:flex-row flex-col items-center px-3  hiddens">
+          <ul className="blocks sm:menu sm:menu-horizontal sm:p-0">
+            <li className="text-center text-xl">
+              <Link href={"#"}>
+                <a >About</a>
+              </Link>
+            </li>
+            <li className="text-center text-xl">
+              <Link href={"#"}>
+                <a>News</a>
+              </Link>
+            </li>
+          </ul>
+          
+         <div className={"py-2"} >
+         {!session?
+              <button className="btn btn-sm gap-2 w-40 block m-auto">
+                <svg className={`inline h-6 w-6`} xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 20 20" height="18px" viewBox="0 0 20 20" width="18px" fill="#ffff"><g><rect fill="#ffffff00" height="20" width="20"/></g><g><path d="M10,4v1h6v10h-6v1h6c0.55,0,1-0.45,1-1V5c0-0.55-0.45-1-1-1H10z"/><polygon points="9.5,6.5 8.79,7.21 11.09,9.5 3,9.5 3,10.5 11.09,10.5 8.79,12.79 9.5,13.5 13,10"/></g></svg>
+          <Link  href={'/register'}>
+            <a > 
+                Register
+            </a>
+          </Link>
+              </button>
+            :
+            ""
+          }
+         </div>
+          
+          <div className={"py-2"}>
+          {session ?
+            <button onClick={signOut} className="btn btn-sm block m-auto ">Log Out</button> 
+            :
+            <button onClick={signIn} className="btn btn-sm block m-auto ">Sign In</button>
+          }
+          </div>
+        </div>
+
+        
+      </div>
+      
+          
+    </>
+  )
+}
+
+export default Header
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex-1">
+  <Link href={'/'}>
+    <div>
+      <a class="btn btn-ghost normal-case text-xl">Crowdr<span><FaCircle className={`inline text-xs text-orange-600`} /></span></a>
+    </div>
+  </Link>
+</div>
+
+
+<div class="sm:inline-flex sm:flex-row flex-col px-3  hiddens">
+  <ul class="blocks sm:menu sm:menu-horizontal sm:p-0">
+    <li><a >About</a></li>
+    <li><a>News</a></li>
+  </ul>
+  
+ <div>
+ {!session?
+  <Link href={'/register'}>
+    <a> 
+      <button class="btn btn-sm mx-2 gap-2">
+        <svg className={`h-6 w-6`} xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 20 20" height="18px" viewBox="0 0 20 20" width="18px" fill="#ffff"><g><rect fill="#ffffff00" height="20" width="20"/></g><g><path d="M10,4v1h6v10h-6v1h6c0.55,0,1-0.45,1-1V5c0-0.55-0.45-1-1-1H10z"/><polygon points="9.5,6.5 8.79,7.21 11.09,9.5 3,9.5 3,10.5 11.09,10.5 8.79,12.79 9.5,13.5 13,10"/></g></svg>
+        Register
+      </button>
+    </a>
+  </Link>
+    :
+    ""
+  }
+ </div>
+  
+  <div>
+  {session ?
+    <button onClick={signOut} className="btn btn-sm loading ">Log Out</button> 
+    :
+    <button onClick={signIn} className="btn btn-sm loading ">Sign In</button>
+  }
+  </div>
+</div>
+
+<label class="btn sm:hidden float-right btn-circle btn-sm dropdown dropdown-left swap swap-rotate">
+    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-52">
+      <li><a>Item 1</a></li>
+      <li><a>Item 2</a></li>
+    </ul>
+  
+    <input type="checkbox" />
+  
+    <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
+  
+    <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
+  
+</label>
+
+
+
+
+
+<header class="sm:navbar bg-base-100">        
+  <nav className="nav-menu">
+    <div class="flex-1">
+      <Link href={'/'}>
+        <div>
+          <a class="btn btn-ghost normal-case text-xl">Crowdr<span><FaCircle className={`inline text-xs text-orange-600`} /></span></a>
+        </div>
+      </Link>
+    </div>
+    
+  </nav>
+
+  
+</header>
